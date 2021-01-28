@@ -9,4 +9,8 @@ a) Data preparation
 Pre-processing: The DSMA input LAS files should be converted in tiles. For that purpose, LidR opensource package is available to convert larger LAS files into smaller tiles of same size. Please visit https://github.com/Jean-Romain/lidR for further details.
 Creating a road mask: Please follow the published article associated with DSMA development for the process to create road mask.
 b) ALS modified DEM production
-   The ALS-mDEM is produced by removing the ALS ground points from each tile using road mask created in previous step. 
+   The ALS-mDEM is produced by removing the ALS ground points from each tile using road mask created in previous step.
+c) Candidate DS mapping: Extract a drainage network (a.k.a watercourses of rivers and streams) from ALS-mDEM. The final drainage network (DN) must possess Strahler stream-orders so that the streams of lower order can be discarded automatically. This function is incorporated in the third module. For details, readers are directed to read the associated publish article at MDPI Remote Sensing. The Candidate DS map is obtained by intersecting DN of ALS-mDEM with road centerlines. However, the resulting map contains many duplicated records for several locations. 
+d) Candidate DS refinement: To overcome the issues of duplicated records, Candidate DS refinement module is implimented. This module removed most of the duplicated records resulting in final output i.e., mapped DS output.
+ NOTE: This should be remember that the after refining the duplicated records, a large number of duplicates are fixed however, for fewer locations, yet some duplicated records were remained. For details, user are required to consult the associated publication.
+ 
